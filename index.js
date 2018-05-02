@@ -1,16 +1,6 @@
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
+function reverse(params){
+	var name = params.name.split("").reverse().join("");
+	return {result: name};
+}; 
 
-app.use(bodyParser.json());
-app.set('port', process.env.PORT || 3000);
-
-
-app.post('/reverse', (req, res) => {
-	var str = req.body.name;
-	return res.json(str.split("").reverse().join(""));
-}); 
-
-app.listen(app.get('port'), () => {
-    console.log('Running on http://localhost:' + app.get('port'));
-});
+exports.main = reverse;
