@@ -8,7 +8,7 @@ POC for calling a Openwhisk action from an android app
  
 ### Set the Auth string which can be used for making calls to the action
 ```
-export AUTH=`wsk property get --auth -i | awk '{ print $3; }'
+export AUTH=`wsk property get --auth -i | awk '{ print $3; }'`
 ```
 
 ### Create a Javascript function that returns a reverse of the string passed in to it
