@@ -7,7 +7,9 @@ POC for calling a Openwhisk action from an android app
  `AUTH_SECRET=$(oc get secret whisk.auth -o yaml | grep "system:" | awk '{print $2}' | base64 --decode) wsk property set --auth $AUTH_SECRET --apihost $(oc get route/openwhisk --template="{{.spec.host}}")`
  
 ### Set the Auth string which can be used for making calls to the action
-`export AUTH=`wsk property get --auth -i | awk '{ print $3; }'``
+```
+export AUTH=`wsk property get --auth -i | awk '{ print $3; }'
+```
 
 ### Create a Javascript function that returns a reverse of the string passed in to it
 eg: https://github.com/cfoskin/openwhisk-example-app/blob/master/index.js
