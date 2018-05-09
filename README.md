@@ -3,10 +3,12 @@ POC for calling a Openwhisk action from an android app
 
 # This assumes Openwhisk is provisioned on Openshift cluster
 
-### Configure wsk to use your OpenWhisk:
- `AUTH_SECRET=$(oc get secret whisk.auth -o yaml | grep "system:" | awk '{print $2}' | base64 --decode) 
- 
- wsk property set --auth $AUTH_SECRET --apihost $(oc get route/openwhisk --template="{{.spec.host}}")`
+### Configure wsk to use your OpenWhisk
+
+```
+AUTH_SECRET=$(oc get secret whisk.auth -o yaml | grep "system:" | awk '{print $2}' | base64 --decode) 
+wsk property set --auth $AUTH_SECRET --apihost $(oc get route/openwhisk --template="{{.spec.host}}")
+ ```
  
 ### Set the Auth string which can be used for making calls to the action
 ```
