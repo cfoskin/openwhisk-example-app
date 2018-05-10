@@ -1,6 +1,6 @@
 function reverse(params){
-	var name = params.name.split("").reverse().join("");
-	return {result: name};
+	var result = params.name.split("").reverse().join("");
+	return {result};
 }; 
 
 exports.main = reverse;
