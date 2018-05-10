@@ -19,12 +19,25 @@ export AUTH=`wsk property get --auth -i | awk '{ print $3; }'`
 eg: https://github.com/cfoskin/openwhisk-example-app/blob/master/index.js
 
 ### An Openwhisk action can be created directly from a file or from a zip file 
+
+### To create an action directly from a file, the function must be a main function.
+
+```javascript
+function main(params){
+	var result = params.name.split("").reverse().join("");
+	return {result};
+};
+```
+
+`wsk action create reverse reverse.js -i`
+
+### To create the action from a zip file, we need a package.json with the main set to the index.js file containing the function. We can then zip these up.
+
 `zip reverse.zip *`
 
-### Create the action 
 `wsk action create reverse reverse.zip --kind nodejs:6 -i`
 
-### List the actions to verify it is present
+### List the actions to verify the action is now present
 `wsk action list -i`
 
 example output:
